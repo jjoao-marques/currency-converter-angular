@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSignOut() {
-    this.authService.SignOut();
+    this.authService.firebaseAuth.signOut();
     this.router.navigate([''])
     
   }

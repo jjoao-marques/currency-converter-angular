@@ -2,7 +2,9 @@
 
   <div class="div-conversor">
 
-    <h1>Conversor | Turma de Formação</h1>
+    <div class="div-title">
+      <h1>Conversor | Turma de Formação</h1>
+    </div>
     <div class="signOut">
       <button (click)="onSignOut()" mat-raised-button color="primary">
         <span class="material-icons">
@@ -17,7 +19,7 @@
         <option class="option-moedas" *ngFor="let item of list" [value]="item.high">{{item.name}}</option>
       </select>
 
-      <input [(ngModel)]="value" type="text" id="input-value" placeholder=" Insira o valor a ser convertido.">
+      <input [(ngModel)]="value" type="text" id="input-value" placeholder=" Insira o valor a ser convertido." matInput>
     </div>
 
     <button (click)="converter()" class="button-convert" mat-raised-button color="primary">CONVERTER</button>
