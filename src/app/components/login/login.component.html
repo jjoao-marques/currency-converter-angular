@@ -1,0 +1,25 @@
+<form action="">
+
+    <div class="forms">
+        <h1>Login | Converter</h1>
+        <mat-form-field class="form-input-email" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input [(ngModel)]="email" name="email" type="email" required maxlength="70" matInput
+                placeholder="Ex. joao@email.com">
+        </mat-form-field>
+
+        <mat-form-field class="form-input-password" appearance="fill">
+            <mat-label>Senha</mat-label>
+            <input matInput [(ngModel)]="password" [formControl]="passwordValid" name="password-name" type="password"
+                maxlength="12" matInput required>
+            <mat-error *ngIf="passwordValid.invalid">{{ errorPasswordValid() }}</mat-error>
+        </mat-form-field>
+        <div class="link-cadastro">
+            <a routerLink="/registration"> Ainda não possui cadastro?</a>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button (click)="login()" [disabled]="errorPasswordValid()" mat-raised-button color="primary">LOGIN</button>
+    </div>
+</form>
