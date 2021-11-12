@@ -19,6 +19,19 @@ export class AuthService {
 
   constructor(public firebaseAuth: AngularFireAuth, private snack: MatSnackBar, private router: Router) { }
 
+
+    // Sign up with email/password
+    SignUp(email: string, password: string) {
+      return this.firebaseAuth.createUserWithEmailAndPassword(email, password)
+        .then((result) => {
+          this.router.navigate(['']);
+          this.message('Usuário cadastrado com sucesso!');
+          
+        }).catch((error) => {
+          this.message(error.message)
+        })
+    }
+
   loginWithEmail(email: string, password:string) {
 
     let thisService = this;
@@ -29,12 +42,14 @@ export class AuthService {
         window.location.replace('/home');
       
     }).catch((error) => {
-      this.message("Usuário ou senha incorretos!")
+      this.message(error.message)
     })
   }
 
   SignOut() {
-    this.firebaseAuth.signOut();
+    return this.firebaseAuth.signOut().then(() => {
+      this.router.navigate(['']);
+    })
   }
 
   message(msg: String): void {
